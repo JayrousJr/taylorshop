@@ -33,11 +33,12 @@ class CategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Category name')
                     ->required()
-                    ->live()
+                    ->live(debounce: 10000)
                     ->helperText('Enter The name of the Product Category')
                     ->maxLength(20)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
+                    ->helperText('Wait for !0seconds for this filled to update')
                     ->readOnly()
                     ->maxLength(255),
             ]);

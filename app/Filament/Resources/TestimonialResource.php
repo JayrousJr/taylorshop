@@ -49,10 +49,9 @@ class TestimonialResource extends Resource
                     ->imageCropAspectRatio('1:1')
                     ->imageResizeTargetWidth('300')
                     ->imageResizeTargetHeight('300')
-                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                        $fileName = $file->hashName();
-                        $name = explode('.', $fileName);
-                        return (string) str('images/testimonials/' . $name[0] . '.png');
+                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file,callable $get): string {
+                        $name = $get('name');
+                        return (string) str('images/testimonials/' . $name . '.webp');
                     }),
                 Forms\Components\RichEditor::make('discription')
                     ->required()

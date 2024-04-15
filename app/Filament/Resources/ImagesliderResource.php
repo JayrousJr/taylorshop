@@ -40,10 +40,9 @@ class ImagesliderResource extends Resource
                     ->imageCropAspectRatio('3:2')
                     ->imageResizeTargetWidth('1920')
                     ->imageResizeTargetHeight('1281')
-                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                        $fileName = $file->hashName();
-                        $name = explode('.', $fileName);
-                        return (string) str('images/sliders/' . $name[0] . '.png');
+                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file,callable $get): string {
+                        $fileName = $get('title');
+                        return (string) str('images/sliders/' . $fileName . '.webp');
                     }),
             ]);
     }

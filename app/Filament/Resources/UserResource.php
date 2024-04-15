@@ -73,10 +73,9 @@ class UserResource extends Resource
                     ->imageCropAspectRatio('3:4')
                     ->imageResizeTargetWidth('600')
                     ->imageResizeTargetHeight('800')
-                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                        $fileName = $file->hashName();
-                        $name = explode('.', $fileName);
-                        return (string) str('profile-photos/' . $name[0] . '.png');
+                    ->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file, callable $get): string {
+                        $fileName = $get('email');
+                        return (string) str('profile-photos/' . $fileName . '.webp');
                     })->label('Profile Image'),
             ]);
     }

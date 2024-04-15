@@ -13,7 +13,7 @@
 	                <div class="footer-box get-in-touch">
 	                    <h2 class="widget-title">Get in Touch</h2>
 	                    <ul>
-	                        <li>{{$data->street}}, {{$data->city}} <br>{{$data->state}},{{$data->country}} </li>
+	                        <li>{{$data->street}}, {{$data->city}} <br>{{$data->state}}, {{$data->country}} </li>
 	                        <li>{{$data->email}}</li>
 	                        <li>{{$data->phone}}</li>
 	                    </ul>
