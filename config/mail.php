@@ -101,7 +101,7 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', '
         info@tnafricanstore.com'),
-        'name' => env('MAIL_FROM_NAME', 'Fransines Shop'),
+        'name' => env('MAIL_FROM_NAME', 'Fransine Shop'),
     ],
 
     /*
