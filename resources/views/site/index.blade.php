@@ -1,22 +1,43 @@
-@include('/site/includes/header')
+@include('site.includes.header')
 
-<!-- home page slider -->
-<div class="homepage-slider">
-    <!-- single home slider -->
+<div class="main-banner">
+    <div class="owl-carousel owl-banner">
+        @foreach($sliders as $data)
+        <div class="item" style="background-image: url(/storage/{{$data->image}});">
+            <div class="header-text">
+                <span class="category"> <em>{{$data->subtitle}}</em></span>
+                <h2>{{$data->title}}</h2>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 
-    @foreach($sliders as $data)
-    <div class="single-homepage-slider " style="background-image: url(/storage/{{$data->image}});">
-        <div class="container">
-            <div class="row">
-                <div
-                    class="offset-lg-1 {{$data->id === 1 ? 'col-lg-7 col-md-12  offset-xl-0' : ''}} {{$data->id === 2 ? 'col-lg-10 text-center' : ''}} {{$data->id === 3 ? 'col-lg-10 text-right' : ''}} ">
-                    <div class="hero-text">
-                        <div class="hero-text-tablecell">
-                            <p class="subtitle">{{$data->subtitle}}</p>
-                            <h1>{{$data->title}}</h1>
-                            <div class="hero-btns">
-                                <a href="{{route('shop')}}" class="boxed-btn">Cloth Collection</a>
-                                <a href="{{route('contact')}}" class="bordered-btn">Contact Us</a>
+
+
+
+<div class="fun-facts">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="counter">
+                                <!-- <h2 class="timer count-title count-number" data-to="1" data-speed="1000"></h2> -->
+                                <p class="count-text ">Cloth designing</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="counter">
+                                <!-- <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2> -->
+                                <p class="count-text ">Fabrics Selling </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="counter">
+                                <!-- <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2> -->
+                                <p class="count-text ">Repair & Renew</p>
                             </div>
                         </div>
                     </div>
@@ -24,118 +45,65 @@
             </div>
         </div>
     </div>
-    <!-- single home slider -->
-    @endforeach
-
 </div>
-<!-- end home page slider -->
 
-<!-- features list section -->
-@include('/site/includes/features')
-<!-- end features list section -->
 
-<!-- product section -->
-<div class="product-section mt-150 mb-150">
+<div class="properties section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3><span class="orange-text">Our</span> Products</h3>
-                    <p>See our latest products from here</p>
+            <div class="col-lg-4 offset-lg-4">
+                <div class="section-heading text-center">
+                    <h6>| VIEW OUR PRODUCT</h6>
+                    <h2>View Recent Products</h2>
                 </div>
             </div>
         </div>
-
+        <!-- Products from the store -->
         <div class="row">
-            @foreach($product as $data)
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href='/product_9OeUu9fHbc9Of4SM3H6rr{{$data->id}}u8QDrviQlx67fJ7tKOPpxdata&prd'><img
-                                src="/storage/{{$data->image}}" alt=""></a>
-                    </div>
-                    <h3>{{$data->name}}</h3>
-                    <div>
-                        <p class="size">Availabe sizes</p>
-                        @foreach($data->size as $size)
-                        <span class="badge badge-secondary">{{$size}}</span>
-                        @endforeach
-                    </div>
-                    <p class="product-price"> ${{$data->cost}}<span>Per Piece</span> </p>
-                    <!-- <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a> -->
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- end product section -->
-
-@include('/site/includes/testimonials')
-
-<!-- advertisement section -->
-<!-- <div class="abt-section mb-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <div class="abt-bg">
-                    <a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="abt-text">
-                    <p class="top-sub">{{env('APP_NAME')}}</p>
-                    <h2>We are <span class="orange-text">Taylors</span></h2>
-                    <p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel
-                        nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed,
-                        interdum velit. Nam eu molestie lorem.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat
-                        veritatis minus, et labore minima mollitia qui ducimus.</p>
-                    <a href="{{route('about')}}" class="boxed-btn mt-4">know more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- end advertisement section -->
-
-
-<!-- latest news -->
-<div class="latest-news pt-150 pb-150">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3><span class="orange-text">Our</span> News</h3>
-                    <p>Latest New of our products and events</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            @foreach($news as $data)
+            <!-- individual item -->
+            @foreach ($items as $data)
             <div class="col-lg-4 col-md-6">
-                <div class="single-latest-news">
-                    <a>
-                        <div class="latest-news-bg" style="background-image: url(/storage/{{$data->image}});"></div>
+                <div class="item">
+                    <a
+                        href={{ $data->type->type == "fabric" ? route('fabric', $data->id) : route('cloth', $data->id) }}>
+                        <img src="/storage/{{$data->image[0]}}" alt="Produc Image">
                     </a>
-                    <div class="news-text-box">
-                        <h3><a>{{$data->name}}</a></h3>
-                        <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> Manager</span>
-                            <span class="date"><i class="fas fa-calendar"></i>
-                                {{date('D M Y', strtotime($data->created_at))}}</span>
-                        </p>
-                        <p class="excerpt">{!!$data->discription!!}</p>
-                    </div>
+                    <span class="category {{$data->status == 1 ? '':'text-white' }}">
+                        {{$data->status == 1 ? 'Available in Stock':'Not Available' }}
+                    </span>
+                    <h6>${{$data->type->cost}}</h6>
+                    <h4>
+                        <a
+                            href={{ $data->type->type == "fabric" ? route('fabric', $data->id) : route('cloth', $data->id) }}>{{$data->type->name}}
+                        </a>
+                    </h4>
+                    <ul>
+                        <li>Type: <span>{{$data->type->type === "cloth"?"Dress":"Fabric"}}</span>
+                        </li>
+                        <li>Size:
+                            @foreach ($data->type->size as $size)
+                            <span
+                                class="badge-fab {{$data->type->type === "cloth" ? "badge-cloth":""}}">{{$size}}</span>
+                            @endforeach
+                            {{$data->type->type === "cloth"?" ":"Yard(s)"}}
+                        </li>
+
+
+                    </ul>
+
                 </div>
             </div>
             @endforeach
+            <!-- individual item ends -->
+
+            <!-- Products ends -->
 
         </div>
+        <div class="main-button align-content-center">
+            <a href={{route('shop')}}>View More Products</a>
+        </div>
     </div>
-</div>
-<!-- end latest news -->
 
-@include('/site/includes/footer')
+</div>
+
+@include('site.includes.footer')

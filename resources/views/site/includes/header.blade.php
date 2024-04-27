@@ -1,154 +1,90 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Fransine's Tailor Shop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description"
-            content="This Bussiness platform has been designed by the Techclouds team, visit us on the footer link below or just https://cloudstechn.com">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="shortcut icon" href='/storage/images/logo/icon.png' type="image/x-icon">
+</head>
 
-        <!-- title -->
-        <title>{{ config('app.name', 'Taylor Shop') }}</title>
+<body>
 
-        <!-- favicon -->
-        <link rel="shortcut icon" type="image/svg" href="/storage/images/logo/icon.png">
-        <!-- google font -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-        <!-- fontawesome -->
-        <link rel="stylesheet" href="assets/css/all.min.css">
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <!-- owl carousel -->
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">
-        <!-- magnific popup -->
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <!-- animate css -->
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <!-- mean menu css -->
-        <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-        <!-- main style -->
-        <link rel="stylesheet" href="assets/css/main.css">
-        <!-- responsive -->
-        <link rel="stylesheet" href="assets/css/responsive.css">
-
-        <style>
-        .success {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            /* Adjust the z-index as needed to ensure it's above other content */
-            padding: 15px;
-            /* Adjust padding to style the notification box */
-            text-align: center;
-            /* Center the text horizontally */
-            width: 300px;
-            /* Set a width for the notification box */
-            background-color: #4CAF50;
-            border: 1px solid #fff;
-            /* Background color for success */
-            color: #fff;
-            /* Text color */
-            border-radius: 5px;
-            /* Rounded corners for the box */
-        }
-
-        .size {
-            margin: 1px;
-            font-size: small;
-            font-weight: 500;
-            color: #F28123;
-        }
-        </style>
-    </head>
-
-    <body>
-
-        <!--PreLoader-->
-        <div class="loader">
-            <div class="loader-inner">
-                <div class="circle"></div>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-        <!--PreLoader Ends-->
+    </div>
+    <!-- ***** Preloader End ***** -->
 
-        <!-- header -->
-        <div class="top-header-area" id="sticker">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 text-center">
-                        <div class="main-menu-wrap">
-                            <!-- logo -->
-                            <div class="site-logo">
-                                <a href="{{route('home')}}">
-                                    <img src="/storage/images/logo/logo.png" alt="">
-                                </a>
-                            </div>
-                            <!-- logo -->
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <ul class="info">
+                        <li><i class="fa fa-envelope"></i> info@tnafricanstore.com</li>
+                        <li><i class="fa fa-map"></i>20 Maynard Ave, Manchester NH</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <ul class="social-links">
+                        @foreach($net as $data)
+                        <li><a href="{{$data->link}}"><i class="fab fa-{{$data->icon}}"></i></a></li>
+                        @endforeach
 
-                            <!-- menu start -->
-                            <nav class="main-menu">
-                                <ul>
-                                    <!-- <li class="current-list-item"><a href="{{route('home')}}">Home</a></li> -->
-                                    <li><a href="{{route('home')}}">Home</a></li>
-                                    <li><a href="{{route('about')}}">About</a></li>
-                                    <li><a href="{{route('contact')}}">Contact</a></li>
-                                    <li><a href="{{route('shop')}}">Shop</a></li>
-
-
-                                    <li>
-                                        <div class="header-icons">
-                                            <!-- <li>
-                                        <a class="shopping-cart" href="#"><i class="fas fa-user"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="#">Log In</a></li>
-                                            <li><a href="#">sign Up</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> -->
-                                            <!-- <a class="mobile-hide search-bar-icon" href="#"><i
-                                                    class="fas fa-search"></i></a> -->
-                                            <!-- </li> -->
-                                        </div>
-                                    </li>
-                                </ul>
-                            </nav>
-                            
-                            <div class="mobile-menu"></div>
-                            <!-- menu end -->
-                        </div>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- end header -->
+    </div>
 
-        <!-- search area -->
-        <div class="search-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <span class="close-btn"><i class="fas fa-window-close"></i></span>
-                        <div class="search-bar">
-                            <div class="search-bar-tablecell">
-                                <h3>Search For:</h3>
-                                <input type="text" placeholder="Keywords">
-                                <button type="submit">Search <i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{{route('home')}}" class="logo">
+                            <h1>FRANCINE'S</h1>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{{route('home')}}">Home</a></li>
+                            <li><a href="{{route('shop')}}">Store</a></li>
+                            <li><a href="{{route('contact')}}">Contact Us</a></li>
+                            <li><a href="{{url('/admin')}}"><i class="fa fa-user"></i>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
                 </div>
             </div>
         </div>
-        <!-- end search arewa -->
-
-        @if(session('success'))
-        <div class="success" id="message">
-            {{@session('success')}}
-        </div>
-        @endif
+    </header>
+    <!-- ***** Header Area End ***** -->

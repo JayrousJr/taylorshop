@@ -18,17 +18,19 @@ use App\Http\Controllers\Filament\LogoutController;
 */
 
 Route::middleware([
-    'Visitor',
 ])->group(function () {
     Route::get('/', [PagesController::class, 'home'])->name('home');
 });
-Route::get('/', [PagesController::class, 'home'])->name('home');
+// Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('about', [PagesController::class, 'about'])->name('about');
 Route::get('contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('shop', [PagesController::class, 'shop'])->name('shop');
-Route::get('product_9OeUu9fHbc9Of4SM3H6rr{product}u8QDrviQlx67fJ7tKOPpxdata&prd', [PagesController::class, 'product'])->name('product');
-Route::post('send', [MessageController::class, 'send'])->name('send');
+Route::get('fabeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2Nzg5LCJuYW1lIjoiSm9zZXBoIn0.OpOSSw7e485LOP5PrzScxHb7SR6sAOM{id}RckfFwi4rp7ou8QDrviQlx67fJ7tKOPpxdata&prd', [PagesController::class, 'fabric'])->name('fabric');
 
+Route::get('clotheyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzNDU2Nzg5LCJuYW1lIjoiSm9zZXBoIn0.OpOSSw7e485LOP5PrzScxHb7SR6sAOM{id}RckfFwi4rp7ou8QDrviQlx67fJ7tKOPpxdata&prd', [PagesController::class, 'cloth'])->name('cloth');
+
+Route::post('send', [MessageController::class, 'send'])->name('send');
+// 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -40,3 +42,6 @@ Route::middleware([
 });
 
 Route::post('/auth/logout', [LogoutController::class, 'logout'])->name('filament.admin.auth.logout');
+Route::permanentRedirect('/login', '/');
+Route::permanentRedirect('/dashboard', '/');
+Route::permanentRedirect('/register', '/');

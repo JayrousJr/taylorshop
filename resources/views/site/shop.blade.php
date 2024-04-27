@@ -1,75 +1,58 @@
-@include('/site/includes/header')
-
-<!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
+@include('site.includes.header')
+<div class="page-heading header-text">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <p>Discover the epitome of personalized style</p>
-                    <h1>Shop</h1>
-                </div>
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="{{route('home')}}">GO BACK HOME</a> / STORE</span>
+                <h3>ALL PRODUCTS ARE FOUND HERE</h3>
             </div>
         </div>
     </div>
 </div>
-<!-- end breadcrumb section -->
 
-<!-- products -->
-<div class="product-section mt-150 mb-150">
+<div class="properties section">
     <div class="container">
-
+        <!-- Products from the store -->
         <div class="row">
-            <div class="col-md-12">
-                <div class="product-filters">
+            <!-- individual item -->
+            @foreach ($items as $data)
+            <div class="col-lg-4 col-md-6">
+                <div class="item">
+                    <a
+                        href={{ $data->type->type == "fabric" ? route('fabric', $data->id) : route('cloth', $data->id) }}>
+                        <img src="/storage/{{$data->image[0]}}" alt="Produc Image">
+                    </a>
+                    <span class="category {{$data->status == 1 ? '':'text-white' }}">
+                        {{$data->status == 1 ? 'Available in Stock':'Not Available' }}
+                    </span>
+                    <h6>${{$data->type->cost}}</h6>
+                    <h4>
+                        <a
+                            href={{ $data->type->type == "fabric" ? route('fabric', $data->id) : route('cloth', $data->id) }}>{{$data->type->name}}
+                        </a>
+                    </h4>
                     <ul>
-                        <li class="active" data-filter="*">All</li>
-                        @foreach($category as $data)
-                        <li data-filter=".{{$data->slug}}">{{$data->name}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
+                        <li>Type: <span>{{$data->type->type === "cloth"?"Dress":"Fabric"}}</span>
+                        </li>
+                        <li>Size:
+                            @foreach ($data->type->size as $size)
+                            <span
+                                class="badge-fab {{$data->type->type === "cloth" ? "badge-cloth":""}}">{{$size}}</span>
+                            @endforeach
+                            {{$data->type->type === "cloth"?" ":"Yard(s)"}}
+                        </li>
 
-        <div class="row product-lists">
-            @foreach($products as $data)
-            <div class="col-lg-4 col-md-6 text-center {{$data->cat_slug}}">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <!-- data&prd -->
-                        <a href='/product_9OeUu9fHbc9Of4SM3H6rr{{$data->id}}u8QDrviQlx67fJ7tKOPpxdata&prd'><img src="/storage/{{$data->image}}" alt=""></a>
-                    </div>
-                    <h3>{{$data->name}}</h3>
-                    <div>
-                        <p class="size">Availabe sizes</p>
-                        @foreach($data->size as $size)
-                        <span class="badge badge-secondary">{{$size}}</span>
-                        @endforeach
-                    </div>
-                    <p class="product-price"> ${{$data->cost}}<span>Per Piece</span> </p>
-                    <!-- <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a> -->
+
+                    </ul>
+
                 </div>
             </div>
             @endforeach
+            <!-- individual item ends -->
 
+            <!-- Products ends -->
         </div>
-
-        <!-- <div class="row">
-			<div class="col-lg-12 text-center">
-				<div class="pagination-wrap">
-					<ul>
-						<li><a href="#">Prev</a></li>
-						<li><a href="#">1</a></li>
-						<li><a class="active" href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">Next</a></li>
-					</ul>
-				</div>
-			</div>
-		</div> -->
     </div>
-</div>
-<!-- end products -->
 
-@include('/site/includes/footer')
+</div>
+@includeIf('site.includes.footer')

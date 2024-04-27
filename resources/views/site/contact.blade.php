@@ -1,129 +1,122 @@
-@include('/site/includes/header')
-
-<!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
+@include('site.includes.header')
+@if(session('success'))
+<div class="success" id="fade">
+    {{session('success')}}
+</div>
+@endif
+<div class="page-heading header-text">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <p>Get 24/7 Support</p>
-                    <h1>Contact us</h1>
-                </div>
+            <div class="col-lg-12">
+                <span class="breadcrumb"><a href="#">Home</a> / Contact Us</span>
+                <h3>Contact Us</h3>
             </div>
         </div>
     </div>
 </div>
-<!-- end breadcrumb section -->
 
-<!-- contact form -->
-<div class="contact-from-section mt-150 mb-150">
+<div class="contact-page section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mb-5 mb-lg-0">
-                <div class="form-title">
-                    <h2>Have you any question?</h2>
-                    <p>If you have any question please, do not hesitate to contact our customer support for more help
-                        and wxplanations 24/7.</p>
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h6>| Contact Us</h6>
+                    <h2>Get In Touch With Our Agents</h2>
                 </div>
-                <div id="form_status">
-                    @if ($errors->any())
-                    <div class="alert alert-danger text-left">
-                        <p>Please Fix the following errors to continue, check carefull your details input!</p>
-                        <ol>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ol>
+                <p>We are obliged to give you the great designs, for whatever occasion you have. We have the talented
+                    designers for making your day joyful with the best designs from our own shop</p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="item phone">
+                            <img src="assets/images/phone-icon.png" alt="" style="max-width: 30px;">
+                            <h6>Phone Number<br><span><a href="tel:+16192781930">+1 (619) 278-1930</a></span></h6>
+                        </div>
                     </div>
-                    @endif
-                </div>
-                <div class="contact-form">
-                    <form type="POST" action="{{route('send')}}" method="post">
-                        @csrf
-                        <p>
-                            <input type="text" placeholder="Name" class="@error('name') is-invalid  @enderror"
-                                name="name" value="{{old('name')}}" id="name">
-
-                            <input type="email" placeholder="Email" class="@error('email') is-invalid  @enderror"
-                                name="email" value="{{old('email')}}" id="email">
-
-                        </p>
-                        <p>
-                            <input type="tel" placeholder="Phone" class="@error('phone') is-invalid  @enderror"
-                                name="phone" value="{{old('phone')}}" id="phone">
-
-                            <input type="text" placeholder="Subject" value="{{old('subject')}}"
-                                class="@error('subject') is-invalid  @enderror" name="subject" id="subject">
-
-                        </p>
-                        <p>
-                            <textarea name="message" cols="30" class="@error('message') is-invalid  @enderror" rows="10"
-                                placeholder="Message">{{old('message')}}</textarea>
-
-                        </p>
-                        <p><input type="submit" value="Submit"></p>
-                    </form>
-                </div>
-            </div>
-            @foreach($about as $data)
-            <div class="col-lg-4">
-                <div class="contact-form-wrap">
-                    <div class="contact-form-box">
-                        <h4><i class="fas fa-map"></i> Shop Address</h4>
-                        <p>{{$data->street}} <br> {{$data->city}}, {{$data->state}}<br> {{$data->country}}</p>
-                    </div>
-                    <div class="contact-form-box">
-                        <h4><i class="far fa-clock"></i> Shop Hours</h4>
-                        <p>MON - FRIDAY: 8:00 AM to 6:00 PM <br> SAT 10 AM to 5 PM </p>
-                    </div>
-                    <div class="contact-form-box">
-                        <h4><i class="fas fa-address-book"></i> Contact</h4>
-                        <p>Phone: {{$data->phone}} <br> Email: {{$data->email}}</p>
+                    <div class="col-lg-12">
+                        <div class="item email">
+                            <img src="assets/images/email-icon.png" alt="" style="max-width: 30px;">
+                            <h6>Business
+                                Email<br><span><a
+                                        href="mailto:info@tnafricanstore.com">info@tnafricanstore.com</a></span></h6>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            <div class="col-lg-6">
+                <form type="POST" class="contact-form" action="{{route('send')}}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="name">Full Name</label>
+                                <input class="@error('name') is-invalid @enderror" name="name" value="{{old('name')}}"
+                                    placeholder="Your Name ...">
+                                @error('name')
+                                <span class="invalid-feedback" style="margin-top: -1.8rem;" role="alert">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="email">Email Address</label>
+                                <input type="email" class="@error('email') is-invalid  @enderror" name="email"
+                                    value="{{old('email')}}" id="email" pattern="[^ @]*@[^ @]*"
+                                    placeholder="Your E-mail...">
+                                @error('email')
+                                <span class="invalid-feedback" style="margin-top: -1.8rem;" role="alert">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" class="@error('phone') is-invalid  @enderror" name="phone"
+                                    value="{{old('phone')}}" id="phone" placeholder="Your Phone...">
+                                @error('phone')
+                                <span class="invalid-feedback" style="margin-top: -1.8rem;" role="alert">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="subject">Subject</label>
+                                <input type="text" placeholder="Subject" value="{{old('subject')}}"
+                                    class="@error('subject') is-invalid  @enderror" name="subject" id="subject">
+                                @error('subject')
+                                <span class="invalid-feedback" style="margin-top: -1.8rem;" role="alert">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="message">Message</label>
+                                <textarea name="message" class="@error('message') is-invalid  @enderror"
+                                    placeholder="Message">{{old('message')}}</textarea>
+                                @error('message')
+                                <span class="invalid-feedback" style="margin-top: -2rem;" role="alert">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12 mt-2">
+                            <fieldset>
+                                <button type="submit" class="orange-button">Send Message</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+                <div id="contact"></div>
+            </div>
         </div>
     </div>
 </div>
-<!-- end contact form -->
-
-<!-- find our location -->
-<div class="find-location blue-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <p> <i class="fas fa-map-marker-alt"></i> Find Our Location</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end find our location -->
-
-<!-- google map section -->
-<div class="embed-responsive embed-responsive-21by9">
-    <iframe
-        src="https://www.google.com/maps/embed/v1/place?q=20+Maynard+ave+Manchester+NH+03103&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
-        class="embed-responsive-item"></iframe>
-</div>
-<!-- end google map section -->
-
-@include('/site/includes/footer')
-<!-- 
-<div style="overflow:hidden;resize:none;max-width:100%;width:500px;height:500px;">
-    <div id="my-map-canvas" style="height:100%; width:100%;max-width:100%;">
-        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=20+Maynard+ave+Manchester+NH+03103&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
-        </iframe>
-    </div>
-    <a class="googlecoder" href="https://www.bootstrapskins.com/themes" id="enable-map-data">premium bootstrap
-        themes</a>
-    <style>
-        #my-map-canvas img {
-            max-width: none !important;
-            background: none !important;
-            font-size: inherit;
-            font-weight: inherit;
-        }
-    </style>
-</div> -->
+@include('site.includes.footer')

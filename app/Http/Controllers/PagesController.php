@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Cloth;
+use App\Models\Fabric;
 use App\Models\Imageslider;
 use App\Models\Network;
 use App\Models\News;
@@ -18,31 +20,29 @@ class PagesController extends Controller
 {
     function home()
     {
-        $data['testimonials'] = Testimonial::orderBy('created_at', 'desc')->get();
-        $data['product'] = Product::orderBy('created_at', 'desc')->take(3)->get();
-        $data['news'] = News::orderBy('created_at', 'desc')->take(3)->get();
         $data['sliders'] = Imageslider::whereIn('id', [1, 2, 3])->get();
-        $data['about'] = About::whereIn('id', [1])->get();
         $data['net'] = Network::orderBy('created_at', 'desc')->get();
-
-
-        return view('/site/index', $data);
+        $cloth = Cloth::with('type')->latest()->get();
+        $fabric = Fabric::with('type')->latest()->get();
+        $items = $fabric->concat($cloth)->take(9);
+        $items = $items->sortByDesc('updated_at');
+        return view('/site/index', $data, compact('items'));
     }
     function shop()
     {
         $data['net'] = Network::orderBy('created_at', 'desc')->get();
-        $data['about'] = About::whereIn('id', [1])->get();
-        $data['testimonials'] = Testimonial::orderBy('created_at', 'desc')->get();
-        $data['category'] = Category::orderBy('created_at', 'asc')->get();
-        $data['products'] = Product::orderBy('created_at', 'desc')->get();
-        return view('/site/shop', $data);
+        $cloth = Cloth::with('type')->latest()->get();
+        $fabric = Fabric::with('type')->latest()->get();
+        $items = $fabric->concat($cloth);
+        $items = $items->sortByDesc('updated_at');
+        // dd($items);
+        // exit;
+        return view('/site/shop', $data, compact('items'));
     }
     function about()
     {
         $data['net'] = Network::orderBy('created_at', 'desc')->get();
         $data['about'] = About::whereIn('id', [1])->get();
-        $data['team'] = User::whereIn('position', ['Manager', 'Taylor'])->take(3)->get();
-        $data['testimonials'] = Testimonial::orderBy('created_at', 'desc')->get();
         return view('/site/about', $data);
     }
     function contact()
@@ -51,17 +51,18 @@ class PagesController extends Controller
         $data['about'] = About::whereIn('id', [1])->get();
         return view('site/contact', $data);
     }
-    function product(Product $product)
+    function fabric($id)
     {
-        $data['about'] = About::whereIn('id', [1])->get();
         $data['net'] = Network::orderBy('created_at', 'desc')->get();
-        $data['testimonials'] = Testimonial::orderBy('created_at', 'desc')->get();
-        $data['product'] = $product;
-        $relatedProduct = Product::where('category', $product->category)
-            ->take(3)
-            ->orderBy('created_at', 'desc')
-            ->get();
-        $data['relatedProduct'] = $relatedProduct;
-        return view('site/single-product', $data);
+        $items = Fabric::with('type')->findOrFail($id);
+        $relatedProduct = Fabric::with('type')->where('type_id', $items->type_id)->get();
+        return view('site/item', $data, compact('items', 'relatedProduct'));
+    }
+    function cloth($id)
+    {
+        $data['net'] = Network::orderBy('created_at', 'desc')->get();
+        $items = Cloth::with('type')->findOrFail($id);
+        $relatedProduct = Cloth::with('type')->where('type_id', $items->type_id)->get();
+        return view('site/item', $data,compact('items', 'relatedProduct'));
     }
 }

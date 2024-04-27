@@ -56,8 +56,6 @@ class MessageResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('subject')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Sent on')
                     ->dateTime()
