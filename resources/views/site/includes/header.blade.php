@@ -43,14 +43,14 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8">
                     <ul class="info">
-                        <li><i class="fa fa-envelope"></i> info@tnafricanstore.com</li>
+                        <li><i class="fa fa-envelope"></i> f.nimanya@yahoo.com</li>
                         <li><i class="fa fa-map"></i>20 Maynard Ave, Manchester NH</li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <ul class="social-links">
                         @foreach($net as $data)
-                        <li><a href="{{$data->link}}"><i class="fab fa-{{$data->icon}}"></i></a></li>
+                        <li><a href="https://{{$data->link}}"><i class="fab fa-{{$data->icon}}"></i></a></li>
                         @endforeach
 
                     </ul>
