@@ -35,6 +35,7 @@ class ClothResource extends Resource
                 Forms\Components\Select::make('type_id')
                     ->options(ClothType::all()->pluck('name', 'id'))
                     ->searchable()
+                    ->label('Cloth Type')
                     ->preload()
                     ->hidden(fn (string $operation): bool => $operation === 'edit')
                     ->hidden(fn (string $operation): bool => $operation === 'view')
@@ -78,6 +79,7 @@ class ClothResource extends Resource
                     ->limitedRemainingText(),
                 Tables\Columns\TextColumn::make('type.cost')
                     ->color('success')
+                    ->label('Cost')
                     ->money('USD')
                     ->searchable()
                     ->color('primary'),
@@ -104,6 +106,7 @@ class ClothResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

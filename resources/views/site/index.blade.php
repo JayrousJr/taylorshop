@@ -24,19 +24,16 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="counter">
-                                <!-- <h2 class="timer count-title count-number" data-to="1" data-speed="1000"></h2> -->
                                 <p class="count-text ">Cloth designing</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="counter">
-                                <!-- <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2> -->
                                 <p class="count-text ">Fabrics Selling </p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="counter">
-                                <!-- <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2> -->
                                 <p class="count-text ">Repair & Renew</p>
                             </div>
                         </div>

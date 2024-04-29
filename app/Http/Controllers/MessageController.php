@@ -39,8 +39,8 @@ class MessageController extends Controller
                 $data->save();
                 
                 $mailto = 'info@tnafricanstore.com';
-            // Mail::to($data->email)->send(new MessageSent($data));
-            // Mail::to($mailto)->send(new MessageReceived($data));
+            Mail::to($data->email)->send(new MessageSent($data));
+            Mail::to($mailto)->send(new MessageReceived($data));
 
             session()->flash('success', 'The message was sent successiful');
             return redirect()->route('contact');

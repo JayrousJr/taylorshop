@@ -238,7 +238,7 @@ body {
 }
 
 .icon-button a i {
-    background-color: #f35525;
+    background-color: #0071f8;
     height: 50px;
     width: 50px;
     text-align: center;
@@ -250,7 +250,7 @@ body {
 }
 
 .icon-button a:hover {
-    color: #f35525;
+    color: #0071f8;
 }
 
 .icon-button a:hover i {
@@ -271,7 +271,7 @@ body {
 }
 
 .main-button a:hover {
-    background-color: #f35525;
+    background-color: #0071f8;
     color: #fff;
 }
 
@@ -348,7 +348,7 @@ Pre-loader Style
     height: 16px;
     top: 12px;
     left: 15px;
-    background: #f35525;
+    background: #0071f8;
     border-radius: 50%;
     -webkit-transform: translateX(0);
     transform: translateX(0);
@@ -371,7 +371,7 @@ Pre-loader Style
     width: 16px;
     height: 16px;
     margin-left: 16px;
-    background: #f35525;
+    background: #0071f8;
     border-radius: 50%;
 }
 
@@ -413,7 +413,7 @@ Header Style
 }
 
 .sub-header ul.social-links li a:hover {
-    background-color: #f35525;
+    background-color: #0071f8;
 }
 
 .sub-header ul.info li {
@@ -432,7 +432,7 @@ Header Style
 
 .sub-header ul.info li i {
     font-size: 20px;
-    color: #f35525;
+    color: #0071f8;
     margin-right: 8px;
 }
 
@@ -539,7 +539,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a i {
-    background-color: #f35525;
+    background-color: #0071f8;
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -559,15 +559,15 @@ Header Style
 }
 
 .header-area .main-nav .nav li:hover a {
-    color: #f35525;
+    color: #0071f8;
 }
 
 .header-area .main-nav .nav li a.active {
-    color: #f35525;
+    color: #0071f8;
 }
 
 .background-header .main-nav .nav li a.active {
-    color: #f35525;
+    color: #0071f8;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -806,18 +806,6 @@ Banner Style
     margin-top: 0px;
 }
 
-.main-banner .item-1 {
-    background-image: url(../images/banner-01.jpg);
-}
-
-.main-banner .item-2 {
-    background-image: url(../images/banner-02.jpg);
-}
-
-.main-banner .item-3 {
-    background-image: url(../images/banner-03.jpg);
-}
-
 .main-banner .item span.category {
     background-color: #fff;
     color: #1e1e1e;
@@ -831,11 +819,11 @@ Banner Style
 
 .main-banner .item span.category em {
     font-style: normal;
-    color: #f35525;
+    color: #0071f8;
 }
 
 .main-banner .item h2 {
-    font-size: 62px;
+    font-size: 2.1rem;
     font-weight: 700;
     text-transform: uppercase;
     color: #fff;
@@ -860,7 +848,7 @@ Banner Style
 }
 
 .main-banner .owl-dots .active {
-    background-color: #f35525;
+    background-color: #0071f8;
 }
 
 .main-banner .owl-nav {
@@ -919,7 +907,7 @@ Featured Style
     width: 110px;
     height: 110px;
     line-height: 110px;
-    background-color: #f35525;
+    background-color: #0071f8;
     border-radius: 50%;
     text-align: center;
     position: absolute;
@@ -959,7 +947,7 @@ Featured Style
 }
 
 .featured .accordion-button:not(.collapsed) {
-    color: #f35525;
+    color: #0071f8;
     background-color: #fafafa;
     outline: none;
 }
@@ -1056,7 +1044,7 @@ Video Style
     display: inline-block;
     text-align: center;
     line-height: 52px;
-    color: #f35525;
+    color: #0071f8;
     outline: 15px solid rgba(254, 85, 37, 0.5);
     font-size: 18px;
 }
@@ -1073,7 +1061,7 @@ Fun Facts Style
 }
 
 .fun-facts .counter {
-    background-color: #ffeee9;
+    background-color: #eef6ff;
     position: relative;
     border-radius: 10px;
     width: 270px;
@@ -1098,14 +1086,14 @@ Fun Facts Style
 .fun-facts .counter h2 {
     margin-right: 25px;
     font-size: 40px;
-    color: #f35525;
+    color: #0071f8;
 }
 
 .fun-facts .counter:after {
     position: absolute;
     width: 50px;
     height: 50px;
-    background-color: #f35525;
+    background-color: #0071f8;
     border-radius: 50%;
     content: "";
     right: -25px;
@@ -1140,7 +1128,7 @@ Best Deal Style
 }
 
 .best-deal .tabs-content .nav-tabs .nav-link.active {
-    background-color: #f35525 !important;
+    background-color: #0071f8 !important;
     color: #fff;
 }
 
@@ -1222,7 +1210,7 @@ Properties Style
 }
 
 .properties .item span.category {
-    background-color: #fbd9cf;
+    background-color: #d6e5f6;
     font-weight: 500;
     border-radius: 5px;
     font-size: 14px;
@@ -1232,7 +1220,7 @@ Properties Style
     margin-top: 25px;
 }
 .category {
-    background-color: #fbd9cf;
+    background-color: #d6e5f6;
     font-weight: 500;
     border-radius: 5px;
     font-size: 14px;
@@ -1269,7 +1257,7 @@ Properties Style
 
 .properties .item h6 {
     font-size: 20px;
-    color: #f35525;
+    color: #0071f8;
     margin-top: 6px;
     display: inline-block;
     float: right;
@@ -1392,7 +1380,7 @@ Contact Style
 }
 
 .contact-content .contact-form button:hover {
-    background-color: #f35525;
+    background-color: #0071f8;
 }
 
 /* 
@@ -1498,7 +1486,7 @@ Properties Style
 }
 
 .properties ul.properties-filter li a.is_active {
-    background-color: #f35525;
+    background-color: #0071f8;
     color: #fff;
 }
 
@@ -1507,7 +1495,7 @@ Properties Style
 }
 
 .properties ul.properties-filter li a:hover {
-    color: #f35525;
+    color: #0071f8;
 }
 
 .properties ul.pagination {
@@ -1538,7 +1526,7 @@ Properties Style
 
 .properties ul.pagination li a:hover,
 .properties ul.pagination li a.is_active {
-    background-color: #f35525;
+    background-color: #0071f8;
     color: #fff;
 }
 
@@ -1561,7 +1549,7 @@ Single Page Style
 }
 
 .single-property .main-content span.category {
-    background-color: #fbd9cf;
+    background-color: #d6e5f6;
     font-weight: 500;
     border-radius: 5px;
     font-size: 14px;
@@ -1594,7 +1582,7 @@ Single Page Style
 }
 
 .single-property .accordion-button:not(.collapsed) {
-    color: #f35525;
+    color: #0071f8;
     background-color: #fafafa;
     outline: none;
 }
@@ -1747,7 +1735,7 @@ Contact Page Style
 }
 
 .contact-page .contact-form button:hover {
-    background-color: #f35525;
+    background-color: #0071f8;
 }
 
 /* 
@@ -1921,4 +1909,29 @@ body {
     /* Text color */
     border-radius: 5px;
     /* Rounded corners for the box */
+}
+.social-media-bar {
+    position: fixed;
+    bottom: 11em;
+    right: 20px;
+    z-index: 9999;
+}
+
+.social-media-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #0071f8;
+    margin-top: 0.2em;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.social-media-icon:hover {
+    background-color: #333; /* Change to the color of your choice */
 }

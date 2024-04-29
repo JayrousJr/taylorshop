@@ -33,13 +33,14 @@ class FabricResource extends Resource
             ->schema([
                 Forms\Components\Select::make('type_id')
                     ->options(FabricType::all()->pluck('name', 'id'))
+                    ->label('Fabric Type')
                     ->searchable()
                     ->preload()
                     ->hidden(fn (string $operation): bool => $operation === 'edit')
                     ->hidden(fn (string $operation): bool => $operation === 'view')
                     ->required(),
                 Toggle::make('status')
-                    ->label('Cloth Availability')
+                    ->label('Fabric Availability')
                     ->required()
                     ->onColor('success')
                     ->offColor('danger'),
@@ -75,6 +76,7 @@ class FabricResource extends Resource
                     ->limit(3)
                     ->limitedRemainingText(),
                 Tables\Columns\TextColumn::make('type.cost')
+                    ->label('Cost')
                     ->color('success')
                     ->money('USD')
                     ->searchable()
@@ -101,6 +103,7 @@ class FabricResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
